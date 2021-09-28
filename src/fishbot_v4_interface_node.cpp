@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-using namespace bobi::aseba;
+using namespace bobi::dbus;
 
 class FishbotV4 {
 public:

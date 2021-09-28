@@ -3,7 +3,7 @@
 #include <ros/ros.h>
 
 namespace bobi {
-    namespace aseba {
+    namespace dbus {
 
         DBusInterface::DBusInterface() : _dbus(QDBusConnection::sessionBus()),
                                          _callbacks({}),
@@ -145,5 +145,5 @@ namespace bobi {
             }
         }
 
-    } // namespace aseba
+    } // namespace dbus
 } // namespace bobi

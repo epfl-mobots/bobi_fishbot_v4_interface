@@ -15,7 +15,7 @@ Q_DECLARE_METATYPE(QList<qint16>);
 typedef QList<qint16> Values;
 
 namespace bobi {
-    namespace aseba {
+    namespace dbus {
         typedef std::function<void(const Values&)> EventCallback;
 
         class DBusInterface : public QObject {
@@ -52,7 +52,7 @@ namespace bobi {
             void dispatch_event(const QDBusMessage& message);
         };
 
-    } // namespace aseba
+    } // namespace dbus
 } // namespace bobi
 
 #endif // DBUSINTERFACE_H
