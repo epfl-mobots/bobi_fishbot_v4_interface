@@ -1,21 +1,26 @@
 #include <ros/ros.h>
+#include <bobi_fishbot_v4_interface/dbus_interface.h>
+
+#include <iostream>
+
+using namespace bobi::aseba;
+
+class FishbotV4 {
+public:
+    FishbotV4()
+    {
+    }
+
+protected:
+    DBusInterface _dbus_intf;
+};
 
 int main(int argc, char** argv)
 {
     ros::init(argc, argv, "fishbot_interface_v4_node");
-    std::shared_ptr<ros::NodeHandle> nh(new ros::NodeHandle());
+    QCoreApplication a(argc, argv);
 
-    int rate;
-    rate = nh->param<int>("rate", rate, 10);
+    FishbotV4 robot;
 
-    int robot_id;
-    robot_id = nh->param<int>("robot_id", robot_id, -1);
-
-    ros::Rate loop_rate(rate);
-    while (ros::ok()) {
-        ros::spinOnce();
-        loop_rate.sleep();
-    }
-
-    return 0;
+    return a.exec();
 }
