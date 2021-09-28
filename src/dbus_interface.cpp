@@ -9,7 +9,7 @@ namespace bobi {
                                          _callbacks({}),
                                          _dbus_main_intf("ch.epfl.mobots.Aseba", "/", "ch.epfl.mobots.AsebaNetwork", _dbus)
         {
-            _check_connection();
+            check_connection();
 
             QDBusMessage event_msg = _dbus_main_intf.call("CreateEventFilter");
             QDBusObjectPath event_path = event_msg.arguments().at(0).value<QDBusObjectPath>();
@@ -32,7 +32,7 @@ namespace bobi {
             }
         }
 
-        bool DBusInterface::_check_connection()
+        bool DBusInterface::check_connection()
         {
             if (!QDBusConnection::sessionBus().isConnected()) {
                 ROS_ERROR("Can't connect to the DBus session");

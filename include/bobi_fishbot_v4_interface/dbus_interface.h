@@ -28,6 +28,7 @@ namespace bobi {
             static Values dBus_msg_to_values(const QDBusMessage& dbmess, int index);
             static std::string to_string(const Values& v);
 
+            bool check_connection();
             void display_node_list() const;
 
             void load_script(const QString& script);
@@ -44,8 +45,6 @@ namespace bobi {
             QDBusInterface _dbus_main_intf;
 
             QList<QString> _node_list;
-
-            bool _check_connection();
 
             QDBusInterface* _event_filter_intf;
 
