@@ -10,8 +10,6 @@ file(GLOB INTERFACE_SOURCES
 )
 list(FILTER INTERFACE_SOURCES EXCLUDE REGEX "fishbot_v4_interface_node.cpp")
 
-find_package(Aseba REQUIRED)
-
 find_package(
     catkin REQUIRED COMPONENTS
     roscpp
@@ -43,11 +41,10 @@ catkin_package(
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
-  ${Aseba_INCLUDE_DIRS}
 )
 
 qt5_wrap_cpp(MOC_SOURCES include/bobi_fishbot_v4_interface/dbus_interface.h)
 
 add_executable(fishbot_v4_interface_node src/fishbot_v4_interface_node.cpp ${MOC_SOURCES} ${INTERFACE_SOURCES})
-target_link_libraries(fishbot_v4_interface_node ${Aseba_LIBRARIES} ${catkin_LIBRARIES} Qt5::DBus Qt5::Test)
+target_link_libraries(fishbot_v4_interface_node ${catkin_LIBRARIES} Qt5::DBus Qt5::Test)
 add_dependencies(fishbot_v4_interface_node ${catkin_EXPORTED_TARGETS} bobi_msgs_generate_messages_cpp)
