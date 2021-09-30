@@ -6,7 +6,9 @@ if [[ $(ls /dev/$rf_dev) ]]; then
     sudo rfcomm release /dev/$rf_dev
 fi
 
-sudo rfcomm bind /dev/$rf_dev $mac_address 0 &
+sudo rfcomm connect /dev/$rf_dev $mac_address 1 &
+
+sleep 5;
 
 # start asebamedulla to connect to the dbus 
 asebamedulla -v -d "ser:device=/dev/$rf_dev"
